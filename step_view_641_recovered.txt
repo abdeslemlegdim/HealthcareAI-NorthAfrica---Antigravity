@@ -1,0 +1,63 @@
+Created At: 2026-05-20T21:31:54Z
+Completed At: 2026-05-20T21:31:54Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/extracted_first_half_1.txt`
+Total Lines: 82
+Total Bytes: 4121
+Showing lines 1 to 82
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: Created At: 2026-05-20T20:37:33Z
+2: Completed At: 2026-05-20T20:37:34Z
+3: File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+4: Total Lines: 910
+5: Total Bytes: 37772
+6: Showing lines 1 to 800
+7: The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+8: 1: import { useEffect, useMemo, useRef, useState } from "react";
+9: 2: import { Activity, Copy, Languages, RefreshCw, SendHorizonal, Sparkles } from "lucide-react";
+10: 3: import ReactMarkdown from "react-markdown";
+11: 4: import remarkGfm from "remark-gfm";
+12: 5: import { describeApiError, getApiTargets, getHealth, queryRAG } from "../../services/api";
+13: 6: import { useRuntime } from "../../context/RuntimeContext";
+14: 7: import { useToast } from "../../context/ToastContext";
+15: 8: import { useLanguageStore } from "../../store/languageStore";
+16: 9: import { useTranslate } from "../../hooks/useTranslate";
+17: 10: import { requestWithRetry } from "../../utils/requestResilience";
+18: 11: import { safeNumber, safeRender } from "../../utils/safeRender";
+19: 12: import { streamParagraphs } from "../../utils/streamingText";
+20: 13: import Badge from "../UI/Badge";
+21: 14: import Button from "../UI/Button";
+22: 15: import ProgressBar from "../UI/ProgressBar";
+23: 16: import Mes
+<truncated 925 bytes>
+}
+53: 773:           </div>
+54: 774:         </div>
+55: 775:       ) : null}
+56: 776: 
+57: 777:       {result ? (
+58: 778:         <div className="space-y-5 animate-fade-in">
+59: 779:           <MessageBubble role="assistant" timestamp={now()}>
+60: 780:             <div className="space-y-4">
+61: 781:               {structuredAnswer?.warning ? (
+62: 782:                 <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">
+63: 783:                   <p className="font-semibold">{structuredAnswer.warning}</p>
+64: 784:                 </div>
+65: 785:               ) : null}
+66: 786: 
+67: 787:               <header className="space-y-1 border-b border-slate-200 pb-3 dark:border-slate-700">
+68: 788:                 <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">{safeRender(structuredAnswer.title, "Clinical Summary")}</h3>
+69: 789:               </header>
+70: 790: 
+71: 791:               {isStreaming ? (
+72: 792:                 <p className="leading-7 text-slate-800 dark:text-slate-100">
+73: 793:                   {highlightTerms(streamingAnswer || "")}
+74: 794:                   <span className="ml-1 inline-block h-4 w-0.5 animate-pulse bg-medical-600 dark:bg-medical-400" />
+75: 795:                 </p>
+76: 796:               ) : structuredAnswer ? (
+77: 797:                 isDirectMode ? (
+78: 798:                   <div className="space-y-4">
+79: 799:                     <section className="space-y-2">
+80: 800:                       <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">{safeRender(result?.labels?.clinical_summary, "Summary")}</h4>
+81: The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+82: 
+The above content shows the entire, complete file contents of the requested file.

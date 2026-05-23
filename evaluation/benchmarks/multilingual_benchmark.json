@@ -1,0 +1,32 @@
+[
+  {
+    "query_en": "What are the symptoms of diabetes?",
+    "query_ar": "ما هي أعراض مرض السكري؟",
+    "query_fr": "Quels sont les symptômes du diabète?",
+    "relevant_docs": {
+      "en": ["diab_symptoms_en"],
+      "ar": ["diab_symptoms_ar"],
+      "fr": ["diab_symptoms_fr"]
+    }
+  },
+  {
+    "query_en": "How is hypertension treated?",
+    "query_ar": "كيف يتم علاج ارتفاع ضغط الدم؟",
+    "query_fr": "Comment traite-t-on l'hypertension?",
+    "relevant_docs": {
+      "en": ["hyp_treatment_en"],
+      "ar": ["hyp_treatment_ar"],
+      "fr": ["hyp_treatment_fr"]
+    }
+  },
+  {
+    "query_en": "What causes tuberculosis?",
+    "query_ar": "ما أسباب مرض السل؟",
+    "query_fr": "Quelles sont les causes de la tuberculose?",
+    "relevant_docs": {
+      "en": ["tb_causes_en"],
+      "ar": ["tb_causes_ar"],
+      "fr": ["tb_causes_fr"]
+    }
+  }
+]

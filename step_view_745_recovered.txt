@@ -1,0 +1,30 @@
+Created At: 2026-05-20T21:34:45Z
+Completed At: 2026-05-20T21:34:46Z
+File Path: `file:///C:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/find_original.js`
+Total Lines: 22
+Total Bytes: 765
+Showing lines 1 to 22
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: const fs = require('fs');
+2: const readline = require('readline');
+3: const path = 'C:/Users/PC/.gemini/antigravity/brain/dfc6d833-873f-4810-a9b9-03dfb038a156/.system_generated/logs/transcript.jsonl';
+4: 
+5: async function search() {
+6:   const fileStream = fs.createReadStream(path);
+7:   const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+8: 
+9:   let count = 0;
+10:   for await (const line of rl) {
+11:     if (line.includes('ChatBox.jsx') && line.includes('output') && line.includes('Total Lines')) {
+12:       count++;
+13:       console.log(`Match ${count}: Length = ${line.length}`);
+14:       // Write the full line JSON to a numbered file
+15:       fs.writeFileSync(`chatbox_match_${count}.json`, line);
+16:     }
+17:   }
+18:   console.log(`Done. Found ${count} matches.`);
+19: }
+20: 
+21: search();
+22: 
+The above content shows the entire, complete file contents of the requested file.

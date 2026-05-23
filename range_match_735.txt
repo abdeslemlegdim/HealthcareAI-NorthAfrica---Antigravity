@@ -1,0 +1,44 @@
+Created At: 2026-05-20T21:34:26Z
+Completed At: 2026-05-20T21:34:27Z
+File Path: `file:///C:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/recover_ranges.js`
+Total Lines: 36
+Total Bytes: 1296
+Showing lines 1 to 36
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: const fs = require('fs');
+2: const readline = require('readline');
+3: const path = 'C:/Users/PC/.gemini/antigravity/brain/dfc6d833-873f-4810-a9b9-03dfb038a156/.system_generated/logs/transcript.jsonl';
+4: 
+5: async function search() {
+6:   const fileStream = fs.createReadStream(path);
+7:   const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+8: 
+9:   let count = 0;
+10:   for await (const line of rl) {
+11:     if (line.includes('ChatBox.jsx') && line.includes('StartLine')) {
+12:       count++;
+13:       try {
+14:         const obj = JSON.parse(line);
+15:         console.log(`\nMatch ${count} (Step ${obj.step_index}, Type: ${obj.type}, Source: ${obj.source}):`);
+16:         if (obj.tool_calls) {
+17:           obj.tool_calls.forEach(tc => {
+18:             if (tc.name === 'view_file' || tc.name === 'default_api:view_file') {
+19:               console.log(`  Tool Call Args:`, JSON.stringify(tc.args));
+20:             }
+21:           });
+22:         }
+23:         if (obj.content) {
+24:           console.log(`  Content Length: ${obj.content.length}`);
+25:           console.log(`  Content snippet: ${obj.content.substring(0, 200)}...`);
+26:           fs.writeFileSync(`range_match_${obj.step_index}.txt`, obj.content);
+27:         }
+28:       } catch (e) {
+29:         console.log(`  Failed to parse Match ${count}: ${e.message}`);
+30:       }
+31:     }
+32:   }
+33: }
+34: 
+35: search();
+36: 
+The above content shows the entire, complete file contents of the requested file.

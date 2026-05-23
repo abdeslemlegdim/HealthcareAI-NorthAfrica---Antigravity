@@ -1,0 +1,24 @@
+Created At: 2026-05-20T21:14:50Z
+Completed At: 2026-05-20T21:14:51Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 540 to 555
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+540:                   aria-label={t("send_question")}
+541:                 >
+542:                   <SendHorizonal className="chatbot__submit-icon" />
+543:                 </button>
+544:               </div>
+545:             </div>
+546:           </div>
+547:         )}
+548:       </div>
+549:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+550:     </main>
+551:   );
+552: };
+553: 
+554: export default ChatBox;
+555: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

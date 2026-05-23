@@ -1,0 +1,8 @@
+{
+  "step_index": 741,
+  "source": "MODEL",
+  "type": "VIEW_FILE",
+  "status": "DONE",
+  "created_at": "2026-05-20T21:34:40Z",
+  "content": "Created At: 2026-05-20T21:34:40Z\nCompleted At: 2026-05-20T21:34:40Z\nFile Path: `file:///C:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/extract_chunks.js`\nTotal Lines: 27\nTotal Bytes: 834\nShowing lines 1 to 27\nThe following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.\n1: const fs = require('fs');\n2: const readline = require('readline');\n3: const path = 'C:/Users/PC/.gemini/antigravity/brain/dfc6d833-873f-4810-a9b9-03dfb038a156/.system_generated/logs/transcript.jsonl';\n4: \n5: if (!fs.existsSync('chunks')) fs.mkdirSync('chunks');\n6: \n7: async function processLineByLine() {\n8:   const fileStream = fs.createReadStream(path);\n9:   const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });\n10: \n11:   let count = 0;\n12:   for await (const line of rl) {\n13:     if (line.includes('ChatBox.jsx')) {\n14:       try {\n15:         const obj = JSON.parse(line);\n16:         if (obj.content || obj.tool_calls) {\n17:            fs.writeFileSync('chunks/chunk_' + count + '.json', JSON.stringify(obj, null, 2));\n18:            count++;\n19:         }\n20:       } catch (e) {}\n21:     }\n22:   }\n23:   console.log('Extracted ' + count + ' chunks.');\n24: }\n25: \n26: processLineByLine();\n27: \nThe above content shows the entire, complete file contents of the requested file.\n"
+}

@@ -1,0 +1,39 @@
+Created At: 2026-05-20T21:32:33Z
+Completed At: 2026-05-20T21:32:33Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 290 to 320
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+290: 
+291:   if (response?.disclaimer) {
+292:     lines.push(`${labels.disclaimer_label || "Disclaimer"}: ${safeRender(response.disclaimer, "")}`);
+293:   }
+294: 
+295:   return lines.join("\n\n").trim();
+296: };
+297: 
+298: const highlightTerms = (text) => {
+299:   try {
+300:     const safeTerms = medicalTerms.map(escapeRegExp);
+301:     const pattern = new RegExp(`(${safeTerms.join("|")})`, "gi");
+302:     const parts = String(text).split(pattern);
+303:     return parts.map((part, idx) => {
+304:       const match = medicalTerms.some((term) => term.toLowerCase() === String(part).toLowerCase());
+305:       if (!match) return <span key={`text-${idx}`}>{part}</span>;
+306:     
+307:   return (
+308:     <main className="chatbot">
+309:       <div className="chatbot__container">
+310:         {messages.length === 0 && !result ? (
+311:           <div className="chatbot__welcome">
+312:             <div className="chatbot__icon-wrapper">
+313:               <div className="chatbot__icon chatbot__icon--gradient">
+314:                 <Sparkles className="chatbot__icon-svg" strokeWidth={1.5} />
+315:               </div>
+316:             </div>
+317:             <h1 className="chatbot__title">{t("chat_title") || "Ask the AI Medical Assistant"}</h1>
+318:             <div className="chatbot__suggestions-box">
+319:               {demoQueries.map((item) => (
+320:                 <button
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

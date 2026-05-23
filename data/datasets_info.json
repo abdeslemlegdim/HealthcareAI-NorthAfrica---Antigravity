@@ -1,0 +1,14 @@
+{
+  "chest_xray14": {
+    "name": "ChestX-ray14",
+    "source": "NIH Clinical Center",
+    "url": "https://nihcc.app.box.com/v/ChestXray-NIHCC",
+    "size": "42 GB",
+    "num_images": 112120,
+    "num_classes": 14,
+    "downloaded": true,
+    "verified": true,
+    "sample_mode": true,
+    "num_samples": 100
+  }
+}

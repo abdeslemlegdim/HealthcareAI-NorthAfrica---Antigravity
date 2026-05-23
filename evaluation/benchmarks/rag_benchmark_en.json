@@ -1,0 +1,32 @@
+[
+  {
+    "question": "What are the main symptoms of diabetes?",
+    "answer": "Main symptoms of diabetes include increased thirst, frequent urination, increased hunger, unexplained weight loss, fatigue, blurred vision, slow-healing sores, and frequent infections.",
+    "relevant_docs": ["diab_symptoms_en", "diab_overview_en"],
+    "language": "en"
+  },
+  {
+    "question": "How is hypertension treated?",
+    "answer": "Hypertension is treated through lifestyle changes (diet, exercise, weight loss) and medications such as ACE inhibitors, ARBs, beta-blockers, calcium channel blockers, and diuretics.",
+    "relevant_docs": ["hyp_treatment_en", "hyp_medications_en"],
+    "language": "en"
+  },
+  {
+    "question": "What causes tuberculosis?",
+    "answer": "Tuberculosis is caused by bacteria called Mycobacterium tuberculosis. It spreads through the air when an infected person coughs, sneezes, or spits.",
+    "relevant_docs": ["tb_causes_en", "tb_transmission_en"],
+    "language": "en"
+  },
+  {
+    "question": "How can COVID-19 be prevented?",
+    "answer": "COVID-19 prevention includes vaccination, wearing masks, maintaining social distance, washing hands frequently, avoiding crowded spaces, and staying home when sick.",
+    "relevant_docs": ["covid_prevention_en", "covid_vaccines_en"],
+    "language": "en"
+  },
+  {
+    "question": "What are the risk factors for hypertension?",
+    "answer": "Risk factors for hypertension include age, family history, obesity, lack of physical activity, high salt intake, excessive alcohol consumption, stress, and certain chronic conditions.",
+    "relevant_docs": ["hyp_risk_factors_en", "hyp_overview_en"],
+    "language": "en"
+  }
+]

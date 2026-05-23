@@ -1,0 +1,96 @@
+Created At: 2026-05-20T21:29:58Z
+Completed At: 2026-05-20T21:29:59Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/patch_chat.js`
+Total Lines: 264
+Total Bytes: 13364
+Showing lines 1 to 264
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: const fs = require('fs');
+2: const file = 'frontend-react/src/components/Chat/ChatBox.jsx';
+3: 
+4: const newJSX = `
+5:   return (
+6:     <main className="chatbot">
+7:       <div className="chatbot__container">
+8:         {messages.length === 0 && !result ? (
+9:           <div className="chatbot__welcome">
+10:             <div className="chatbot__icon-wrapper">
+11:               <div className="chatbot__icon chatbot__icon--gradient">
+12:                 <Sparkles className="chatbot__icon-svg" strokeWidth={1.5} />
+13:               </div>
+14:             </div>
+15:             <h1 className="chatbot__title">{t("chat_title") || "Ask the AI Medical Assistant"}</h1>
+16:             <div className="chatbot__suggestions-box">
+17:               {demoQueries.map((item) => (
+18:                 <button
+19:                   key={item.label}
+20:                   className="chatbot__suggestion"
+21:                   onClick={() => {
+22:                     setQuery(item.value);
+23:                     runQuery(item.value);
+24:                   }}
+25:                   disabled={loading}
+26:                 >
+27:                   {item.value}
+28:                 </button>
+29:               ))}
+30:               <div className="chatbot__input-wrapper mt-4">
+31:                 <label className="chatbot__label" htmlFor="chat-input">{t("chat_placeholder")}</label>
+32:                 <input
+33:                   id="chat-input"
+34:                   className="chatbot__input"
+35:                   type="text"
+36:                   placeholder={
+<truncated 11051 bytes>
+    </div>
+215:             
+216:             <div className="chatbot__input-box">
+217:               <div className="chatbot__textarea-wrapper">
+218:                 <label className="chatbot__label" htmlFor="chat-textarea">{t("chat_placeholder")}</label>
+219:                 <textarea
+220:                   id="chat-textarea"
+221:                   className="chatbot__textarea"
+222:                   placeholder={t("chat_placeholder")}
+223:                   value={query}
+224:                   disabled={loading}
+225:                   onChange={(e) => setQuery(e.target.value)}
+226:                   onKeyDown={(e) => {
+227:                     if (e.key === "Enter" && !e.shiftKey) {
+228:                       e.preventDefault();
+229:                       sendCurrentQuery();
+230:                     }
+231:                   }}
+232:                   rows={1}
+233:                 />
+234:                 <button
+235:                   className="chatbot__submit chatbot__submit--textarea"
+236:                   onClick={sendCurrentQuery}
+237:                   disabled={!query.trim() || loading}
+238:                   aria-label={t("send_question")}
+239:                 >
+240:                   <SendHorizonal className="chatbot__submit-icon" />
+241:                 </button>
+242:               </div>
+243:             </div>
+244:           </div>
+245:         )}
+246:       </div>
+247:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+248:     </main>
+249:   );
+250: };
+251: 
+252: export default ChatBox;
+253: `;
+254: 
+255: let content = fs.readFileSync(file, 'utf8');
+256: const startIdx = content.indexOf('  return (');
+257: if (startIdx !== -1) {
+258:   content = content.substring(0, startIdx) + newJSX;
+259:   fs.writeFileSync(file, content);
+260:   console.log('Successfully patched ChatBox.jsx');
+261: } else {
+262:   console.log('Could not find return statement in ChatBox.jsx');
+263: }
+264: 
+The above content shows the entire, complete file contents of the requested file.

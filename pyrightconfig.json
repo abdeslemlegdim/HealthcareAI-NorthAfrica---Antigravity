@@ -1,0 +1,24 @@
+{
+  "venvPath": "c:/HealthcareAI-NorthAfrica",
+  "venv": "venv",
+  "include": [
+    "main.py",
+    "src",
+    "tests"
+  ],
+  "extraPaths": [
+    "c:/HealthcareAI-NorthAfrica",
+    "c:/HealthcareAI-NorthAfrica/src"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "c:/HealthcareAI-NorthAfrica",
+      "extraPaths": [
+        "c:/HealthcareAI-NorthAfrica",
+        "c:/HealthcareAI-NorthAfrica/src"
+      ]
+    }
+  ],
+  "reportMissingImports": true,
+  "reportMissingModuleSource": false
+}

@@ -1,0 +1,117 @@
+# Healthcare AI Assistant - Configuration
+
+# Medical Imaging Module
+medical_imaging:
+  model:
+    backbone: efficientnet_b0
+    pretrained: true
+    num_classes: 8
+    input_size: [224, 224]
+  
+  training:
+    batch_size: 32
+    learning_rate: 0.001
+    epochs: 50
+    optimizer: adam
+    scheduler: cosine
+    early_stopping_patience: 10
+  
+  augmentation:
+    random_flip: true
+    random_rotation: 15
+    random_brightness: 0.2
+    random_contrast: 0.2
+    mixup_alpha: 0.2
+
+  diseases:
+    - Normal
+    - Pneumonia
+    - COVID-19
+    - Tuberculosis
+    - Atelectasis
+    - Cardiomegaly
+    - Effusion
+    - Infiltration
+
+# RAG System Configuration
+rag_system:
+  embedding:
+    model_name: "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
+    dimension: 768
+    batch_size: 128
+  
+  retrieval:
+    dense_top_k: 20
+    sparse_top_k: 20
+    final_top_k: 5
+    hybrid_alpha: 0.5  # Weight for dense vs sparse
+  
+  reranking:
+    enabled: true
+    model_name: "cross-encoder/ms-marco-MiniLM-L6-v2"
+  
+  llm:
+    model_name: "Qwen/Qwen2.5-7B-Instruct"
+    max_tokens: 512
+    temperature: 0.7
+    top_p: 0.9
+  
+  languages:
+    supported: ["ar", "fr", "en"]
+    default: "ar"
+
+# Vital Signs Configuration
+vital_signs:
+  rppg:
+    fps: 30
+    measurement_duration: 30  # seconds
+    roi_method: "mediapipe"  # mediapipe, mtcnn, haar
+    signal_processing:
+      filter_type: "butterworth"
+      low_cutoff: 0.7  # Hz
+      high_cutoff: 4.0  # Hz
+      filter_order: 5
+  
+  calibration:
+    enabled: true
+    reference_device: "pulse_oximeter"
+
+# Explainability Configuration
+explainability:
+  gradcam:
+    layer_name: "features.7"
+    colormap: "jet"
+  
+  shap:
+    n_samples: 100
+    kernel: "auto"
+  
+  lime:
+    n_samples: 1000
+    n_features: 5
+
+# Data Processing
+data:
+  split_ratio:
+    train: 0.7
+    val: 0.15
+    test: 0.15
+  
+  preprocessing:
+    normalize: true
+    resize: [224, 224]
+    augmentation: true
+
+# Monitoring
+monitoring:
+  enable_prometheus: true
+  enable_mlflow: true
+  enable_wandb: false
+  log_interval: 100  # steps
+
+# Security & Compliance
+security:
+  enable_audit_log: true
+  enable_encryption: true
+  anonymize_phi: true
+  max_file_size_mb: 10

@@ -1,0 +1,35 @@
+Created At: 2026-05-20T21:34:40Z
+Completed At: 2026-05-20T21:34:40Z
+File Path: `file:///C:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/extract_chunks.js`
+Total Lines: 27
+Total Bytes: 834
+Showing lines 1 to 27
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: const fs = require('fs');
+2: const readline = require('readline');
+3: const path = 'C:/Users/PC/.gemini/antigravity/brain/dfc6d833-873f-4810-a9b9-03dfb038a156/.system_generated/logs/transcript.jsonl';
+4: 
+5: if (!fs.existsSync('chunks')) fs.mkdirSync('chunks');
+6: 
+7: async function processLineByLine() {
+8:   const fileStream = fs.createReadStream(path);
+9:   const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+10: 
+11:   let count = 0;
+12:   for await (const line of rl) {
+13:     if (line.includes('ChatBox.jsx')) {
+14:       try {
+15:         const obj = JSON.parse(line);
+16:         if (obj.content || obj.tool_calls) {
+17:            fs.writeFileSync('chunks/chunk_' + count + '.json', JSON.stringify(obj, null, 2));
+18:            count++;
+19:         }
+20:       } catch (e) {}
+21:     }
+22:   }
+23:   console.log('Extracted ' + count + ' chunks.');
+24: }
+25: 
+26: processLineByLine();
+27: 
+The above content shows the entire, complete file contents of the requested file.

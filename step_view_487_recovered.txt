@@ -1,0 +1,86 @@
+Created At: 2026-05-20T21:15:33Z
+Completed At: 2026-05-20T21:15:33Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 150 to 250
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+150: const isHeaderLine = (line) => {
+151:   const cleaned = cleanMarkdownText(line).replace(/:$/, "").trim();
+152:   if (!cleaned || cleaned.length > 48) return false;
+153:   return /(symptom|sign|cause|risk|treatment|management|diagnos|complication|prevention|overview|summary)/i.test(cleaned);
+154: };
+155: 
+156: const buildStructuredAnswer = ({ answer = "", question = "", sources = [] }) => {
+157:   const lines = String(answer)
+158:     .split(/\n+/)
+159:     .map((line) => line.trim())
+160:     .filter(Boolean);
+161: 
+162:   const title = inferTitle({ answer, question, sources });
+163:   const sections = [];
+164:   let current = null;
+165: 
+166:   const ensureSection = (name) => {
+167:     if (!current || current.title !== name) {
+168:       current = { title: name, bullets: [], paragraphs: [] };
+169:       sections.push(current);
+170:     }
+171:   };
+172: 
+173:   for (const rawLine of lines) {
+174:     const line = cleanMarkdownText(rawLine);
+175:     if (!line) continue;
+176: 
+177:     if (isHeaderLine(line)) {
+178:       const normalizedHeader = line.replace(/:$/, "").trim();
+179:       ensureSection(normalizedHeader);
+180:       continue;
+181:     }
+182: 
+183:     if (/^[-*•]\s+/.test(rawLine)) {
+184:       ensureSection(current?.title || "Clinical Summary");
+185:       current.bullets.push(line.replace(/^[-*•]\s+/, "").trim());
+186:       continue;
+187:     }
+188: 
+189:     if (line.toLowerCase() === normalizeKey(title)) {
+190:       continue;
+191:
+<truncated 1053 bytes>
+  return {
+217:       title,
+218:       sections: [{ title: "Clinical Summary", bullets: [], paragraphs: [safeRender(answer, "No answer was returned.")] }],
+219:     };
+220:   }
+221: 
+222:   return { title, sections: filteredSections };
+223: };
+224: 
+225: const buildStructuredResponse = ({ result = {}, question = "", lastPrompt = "" }) => {
+226:   if (!hasStructuredResponse(result)) {
+227:     return null;
+228:   }
+229: 
+230:   const labels = result.labels || {};
+231:   const fallbackQuestion = question || lastPrompt;
+232:   const title = safeRender(result.title, inferTitle({ answer: result.summary || result.answer || "", question: fallbackQuestion, sources: result.sources || [] }));
+233:   const summary = result.warning ? safeRender(result.summary, "") : safeRender(result.summary || result.answer, "No answer was returned.");
+234:   const symptoms = Array.isArray(result.symptoms) ? result.symptoms.map((item) => safeRender(item, "")).filter(Boolean) : [];
+235:   const causes = Array.isArray(result.causes) ? result.causes.map((item) => safeRender(item, "")).filter(Boolean) : [];
+236:   const treatment = Array.isArray(result.treatment) ? result.treatment.map((item) => safeRender(item, "")).filter(Boolean) : [];
+237: 
+238:   const sections = [];
+239:   if (summary) {
+240:     sections.push({ title: labels.clinical_summary || "Clinical Summary", paragraphs: [summary], bullets: [] });
+241:   }
+242:   if (symptoms.length) {
+243:     sections.push({ title: labels.symptoms || "Symptoms", paragraphs: [], bullets: symptoms });
+244:   }
+245:   if (causes.length) {
+246:     sections.push({ title: labels.causes || "Causes", paragraphs: [], bullets: causes });
+247:   }
+248:   if (treatment.length) {
+249:     sections.push({ title: labels.treatment || "Treatment", paragraphs: [], bullets: treatment });
+250:   }
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

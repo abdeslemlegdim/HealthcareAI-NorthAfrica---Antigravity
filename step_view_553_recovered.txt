@@ -1,0 +1,81 @@
+Created At: 2026-05-20T21:29:50Z
+Completed At: 2026-05-20T21:29:50Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 450 to 555
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+450:                                     <li key={`symp-${idx}`}>{highlightTerms(safeRender(item, ""))}</li>
+451:                                   ))}
+452:                                 </ul>
+453:                               </section>
+454:                             </div>
+455:                           ) : (
+456:                             <div className="space-y-4">
+457:                               {structuredAnswer.sections.map((section) => (
+458:                                 <section key={section.title} className="space-y-2">
+459:                                   <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">{section.title}</h4>
+460:                                   {section.paragraphs.map((p, i) => <p key={i} className="dark:text-slate-100">{highlightTerms(p)}</p>)}
+461:                                   {section.bullets.length > 0 && (
+462:                                     <ul className="list-disc pl-5 dark:text-slate-100">
+463:                                       {section.bullets.map((b, i) => <li key={i}>{highlightTerms(b)}</li>)}
+464:                                     </ul>
+465:                                   )}
+466:                                 </section>
+467:                               ))}
+468:                             </div>
+469:                           )
+470:                         ) : (
+471:                           <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+472:    
+<truncated 2387 bytes>
+-md text-sm font-medium">
+508:                           {t("retry")}
+509:                         </button>
+510:                       )}
+511:                     </div>
+512:                   </div>
+513:                 )}
+514:                 
+515:               </div>
+516:             </div>
+517:             
+518:             <div className="chatbot__input-box">
+519:               <div className="chatbot__textarea-wrapper">
+520:                 <label className="chatbot__label" htmlFor="chat-textarea">{t("chat_placeholder")}</label>
+521:                 <textarea
+522:                   id="chat-textarea"
+523:                   className="chatbot__textarea"
+524:                   placeholder={t("chat_placeholder")}
+525:                   value={query}
+526:                   disabled={loading}
+527:                   onChange={(e) => setQuery(e.target.value)}
+528:                   onKeyDown={(e) => {
+529:                     if (e.key === "Enter" && !e.shiftKey) {
+530:                       e.preventDefault();
+531:                       sendCurrentQuery();
+532:                     }
+533:                   }}
+534:                   rows={1}
+535:                 />
+536:                 <button
+537:                   className="chatbot__submit chatbot__submit--textarea"
+538:                   onClick={sendCurrentQuery}
+539:                   disabled={!query.trim() || loading}
+540:                   aria-label={t("send_question")}
+541:                 >
+542:                   <SendHorizonal className="chatbot__submit-icon" />
+543:                 </button>
+544:               </div>
+545:             </div>
+546:           </div>
+547:         )}
+548:       </div>
+549:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+550:     </main>
+551:   );
+552: };
+553: 
+554: export default ChatBox;
+555: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

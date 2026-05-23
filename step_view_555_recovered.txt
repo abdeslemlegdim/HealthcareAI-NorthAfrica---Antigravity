@@ -1,0 +1,69 @@
+Created At: 2026-05-20T21:29:52Z
+Completed At: 2026-05-20T21:29:52Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 1 to 450
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import { useEffect, useMemo, useRef, useState } from "react";
+2: import { Activity, Copy, Languages, RefreshCw, SendHorizonal, Sparkles } from "lucide-react";
+3: import ReactMarkdown from "react-markdown";
+4: import remarkGfm from "remark-gfm";
+5: import { describeApiError, getApiTargets, getHealth, queryRAG } from "../../services/api";
+6: import { useRuntime } from "../../context/RuntimeContext";
+7: import { useToast } from "../../context/ToastContext";
+8: import { useLanguageStore } from "../../store/languageStore";
+9: import { useTranslate } from "../../hooks/useTranslate";
+10: import { requestWithRetry } from "../../utils/requestResilience";
+11: import { safeNumber, safeRender } from "../../utils/safeRender";
+12: import { streamParagraphs } from "../../utils/streamingText";
+13: import Badge from "../UI/Badge";
+14: import Button from "../UI/Button";
+15: import ProgressBar from "../UI/ProgressBar";
+16: import MessageBubble from "./MessageBubble";
+17: import SourceCard from "./SourceCard";
+18: 
+19: const CHAT_TIMEOUT_MS = 90000;
+20: 
+21: const medicalTerms = [
+22:   "pneumonia",
+23:   "tuberculosis",
+24:   "covid-19",
+25:   "dyspnea",
+26:   "diagnosis",
+27:   "symptoms",
+28:   "treatment",
+29:   "infection",
+30:   "respiratory",
+31:   "pneumonie",
+32:   "symptomes",
+33:   "traitement",
+34:   "الالتهاب الرئوي",
+35:   "الاعراض",
+36:   "التشخيص"
+37: ];
+38: 
+39: const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g,
+<truncated 17245 bytes>
+e="space-y-1 border-b border-slate-200 pb-3 dark:border-slate-700">
+431:                           <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">{safeRender(structuredAnswer?.title, "Clinical Summary")}</h3>
+432:                         </header>
+433:                         
+434:                         {isStreaming ? (
+435:                           <p className="leading-7 text-slate-800 dark:text-slate-100">
+436:                             {highlightTerms(streamingAnswer || "")}
+437:                             <span className="ml-1 inline-block h-4 w-0.5 animate-pulse bg-medical-600 dark:bg-medical-400" />
+438:                           </p>
+439:                         ) : structuredAnswer ? (
+440:                           isDirectMode ? (
+441:                             <div className="space-y-4">
+442:                               <section className="space-y-2">
+443:                                 <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">{safeRender(result?.labels?.clinical_summary, "Summary")}</h4>
+444:                                 <p className="leading-7 dark:text-slate-100">{safeRender(result?.summary || result?.answer, "")}</p>
+445:                               </section>
+446:                               <section className="space-y-2">
+447:                                 <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">{safeRender(result?.labels?.symptoms, "Symptoms")}</h4>
+448:                                 <ul className="list-disc pl-5 dark:text-slate-100">
+449:                                   {(Array.isArray(result?.symptoms) ? result.symptoms : []).map((item, idx) => (
+450:                                     <li key={`symp-${idx}`}>{highlightTerms(safeRender(item, ""))}</li>
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

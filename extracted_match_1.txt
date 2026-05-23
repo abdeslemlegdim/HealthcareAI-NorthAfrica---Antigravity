@@ -1,0 +1,90 @@
+Created At: 2026-05-20T20:38:29Z
+Completed At: 2026-05-20T20:38:29Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 910
+Total Bytes: 37772
+Showing lines 550 to 910
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+550:   };
+551: 
+552:   const runHealthCheck = async () => {
+553:     try {
+554:       const response = await requestWithRetry(() => getHealth(), { timeoutMs: 5000, retries: 0 });
+555:       const apiTargets = getApiTargets();
+556:       setDebugInfo((prev) => ({
+557:         ...prev,
+558:         apiTargets,
+559:         lastResponse: {
+560:           ...prev?.lastResponse,
+561:           healthCheck: {
+562:             ok: true,
+563:             status: response?.status ?? 200,
+564:             payload: response?.data ?? null,
+565:             checkedAt: new Date().toISOString()
+566:           }
+567:         }
+568:       }));
+569:       pushToast(`API healthy (${response?.status ?? 200})`, "success");
+570:     } catch (err) {
+571:       const apiError = describeApiError(err);
+572:       setDebugInfo((prev) => ({
+573:         ...prev,
+574:         apiTargets: getApiTargets(),
+575:         lastResponse: {
+576:           ...prev?.lastResponse,
+577:           healthCheck: {
+578:             ok: false,
+579:             checkedAt: new Date().toISOString(),
+580:             error: apiError.meta
+581:           }
+582:         }
+583:       }));
+584:       pushToast(apiError.toastMessage, "error");
+585:     }
+586:   };
+587: 
+588:   return (
+589:     <section className="space-y-5">
+590:       <div className="glass-card rounded-3xl p-5 dark:border-slate-700 dark:bg-slate-900/70">
+591:         <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-70
+<truncated 16722 bytes>
+
+873:               <div className="glass-card rounded-2xl p-5 dark:border-slate-700 dark:bg-slate-900/70">
+874:                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+875:                   <h3 className="text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300">{t("inference_metadata")}</h3>
+876:                   <Badge tone="info">{normalizeLanguage(result.language_detected || result.language)}</Badge>
+877:                 </div>
+878:                 <ProgressBar
+879:                   value={Number(result.confidence || 0) * 100}
+880:                   label={t("confidence")}
+881:                   color="medical"
+882:                 />
+883:               </div>
+884: 
+885:               <div className="glass-card rounded-2xl p-5 dark:border-slate-700 dark:bg-slate-900/70">
+886:                 <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300">{result?.labels?.sources || t("section_sources")}</h3>
+887:                 <div className="grid gap-3 md:grid-cols-2">
+888:                   {(result.sources || []).map((source, idx) => (
+889:                     <SourceCard
+890:                       key={`${source.title || "source"}-${idx}`}
+891:                       source={source}
+892:                       index={idx}
+893:                       delay={idx * 80}
+894:                       searchTerms={citationSearchTerms}
+895:                     />
+896:                   ))}
+897:                 </div>
+898:               </div>
+899:             </>
+900:           ) : null}
+901:         </div>
+902:       ) : null}
+903: 
+904:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+905:     </section>
+906:   );
+907: };
+908: 
+909: export default ChatBox;
+910: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

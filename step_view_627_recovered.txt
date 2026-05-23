@@ -1,0 +1,79 @@
+Created At: 2026-05-20T21:31:33Z
+Completed At: 2026-05-20T21:31:33Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/extracted_match_1.txt`
+Total Lines: 91
+Total Bytes: 4121
+Showing lines 1 to 91
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: Created At: 2026-05-20T20:38:29Z
+2: Completed At: 2026-05-20T20:38:29Z
+3: File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+4: Total Lines: 910
+5: Total Bytes: 37772
+6: Showing lines 550 to 910
+7: The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+8: 550:   };
+9: 551: 
+10: 552:   const runHealthCheck = async () => {
+11: 553:     try {
+12: 554:       const response = await requestWithRetry(() => getHealth(), { timeoutMs: 5000, retries: 0 });
+13: 555:       const apiTargets = getApiTargets();
+14: 556:       setDebugInfo((prev) => ({
+15: 557:         ...prev,
+16: 558:         apiTargets,
+17: 559:         lastResponse: {
+18: 560:           ...prev?.lastResponse,
+19: 561:           healthCheck: {
+20: 562:             ok: true,
+21: 563:             status: response?.status ?? 200,
+22: 564:             payload: response?.data ?? null,
+23: 565:             checkedAt: new Date().toISOString()
+24: 566:           }
+25: 567:         }
+26: 568:       }));
+27: 569:       pushToast(`API healthy (${response?.status ?? 200})`, "success");
+28: 570:     } catch (err) {
+29: 571:       const apiError = describeApiError(err);
+30: 572:       setDebugInfo((prev) => ({
+31: 573:         ...prev,
+32: 574:         apiTargets: getApiTargets(),
+<truncated 956 bytes>
+className="text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300">{t("inference_metadata")}</h3>
+55: 876:                   <Badge tone="info">{normalizeLanguage(result.language_detected || result.language)}</Badge>
+56: 877:                 </div>
+57: 878:                 <ProgressBar
+58: 879:                   value={Number(result.confidence || 0) * 100}
+59: 880:                   label={t("confidence")}
+60: 881:                   color="medical"
+61: 882:                 />
+62: 883:               </div>
+63: 884: 
+64: 885:               <div className="glass-card rounded-2xl p-5 dark:border-slate-700 dark:bg-slate-900/70">
+65: 886:                 <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300">{result?.labels?.sources || t("section_sources")}</h3>
+66: 887:                 <div className="grid gap-3 md:grid-cols-2">
+67: 888:                   {(result.sources || []).map((source, idx) => (
+68: 889:                     <SourceCard
+69: 890:                       key={`${source.title || "source"}-${idx}`}
+70: 891:                       source={source}
+71: 892:                       index={idx}
+72: 893:                       delay={idx * 80}
+73: 894:                       searchTerms={citationSearchTerms}
+74: 895:                     />
+75: 896:                   ))}
+76: 897:                 </div>
+77: 898:               </div>
+78: 899:             </>
+79: 900:           ) : null}
+80: 901:         </div>
+81: 902:       ) : null}
+82: 903: 
+83: 904:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+84: 905:     </section>
+85: 906:   );
+86: 907: };
+87: 908: 
+88: 909: export default ChatBox;
+89: 910: 
+90: The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+91: 
+The above content shows the entire, complete file contents of the requested file.

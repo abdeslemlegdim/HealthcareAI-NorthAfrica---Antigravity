@@ -1,0 +1,107 @@
+Created At: 2026-05-20T21:17:27Z
+Completed At: 2026-05-20T21:17:27Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 1 to 100
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import { useEffect, useMemo, useRef, useState } from "react";
+2: import { Activity, Copy, Languages, RefreshCw, SendHorizonal, Sparkles } from "lucide-react";
+3: import ReactMarkdown from "react-markdown";
+4: import remarkGfm from "remark-gfm";
+5: import { describeApiError, getApiTargets, getHealth, queryRAG } from "../../services/api";
+6: import { useRuntime } from "../../context/RuntimeContext";
+7: import { useToast } from "../../context/ToastContext";
+8: import { useLanguageStore } from "../../store/languageStore";
+9: import { useTranslate } from "../../hooks/useTranslate";
+10: import { requestWithRetry } from "../../utils/requestResilience";
+11: import { safeNumber, safeRender } from "../../utils/safeRender";
+12: import { streamParagraphs } from "../../utils/streamingText";
+13: import Badge from "../UI/Badge";
+14: import Button from "../UI/Button";
+15: import ProgressBar from "../UI/ProgressBar";
+16: import MessageBubble from "./MessageBubble";
+17: import SourceCard from "./SourceCard";
+18: 
+19: const CHAT_TIMEOUT_MS = 90000;
+20: 
+21: const medicalTerms = [
+22:   "pneumonia",
+23:   "tuberculosis",
+24:   "covid-19",
+25:   "dyspnea",
+26:   "diagnosis",
+27:   "symptoms",
+28:   "treatment",
+29:   "infection",
+30:   "respiratory",
+31:   "pneumonie",
+32:   "symptomes",
+33:   "traitement",
+34:   "الالتهاب الرئوي",
+35:   "الاعراض",
+36:   "التشخيص"
+37: ];
+38: 
+39: const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g,
+<truncated 117 bytes>
+e();
+43:   const map = { en: "English", ar: "Arabic", fr: "French" };
+44:   return map[code] || code;
+45: };
+46: 
+47: const hasStructuredResponse = (result = {}) =>
+48:   Boolean(
+49:     result &&
+50:       (
+51:         result.title ||
+52:         result.summary ||
+53:         (Array.isArray(result.symptoms) && result.symptoms.length > 0) ||
+54:         (Array.isArray(result.causes) && result.causes.length > 0) ||
+55:         (Array.isArray(result.treatment) && result.treatment.length > 0) ||
+56:         result.warning ||
+57:         result.disclaimer
+58:       )
+59:   );
+60: 
+61: const formatAnswer = (text) => {
+62:   if (!text) return ["No answer was returned."];
+63:   return String(text)
+64:     .split(/\n+/)
+65:     .map((line) => line.trim())
+66:     .filter(Boolean);
+67: };
+68: 
+69: const normalizeKey = (value) =>
+70:   String(value || "")
+71:     .toLowerCase()
+72:     .replace(/[*_`#:\-]/g, " ")
+73:     .replace(/\s+/g, " ")
+74:     .trim();
+75: 
+76: const dedupeList = (items = []) => {
+77:   const seen = new Set();
+78:   return items.filter((item) => {
+79:     const key = normalizeKey(item);
+80:     if (!key || seen.has(key)) return false;
+81:     seen.add(key);
+82:     return true;
+83:   });
+84: };
+85: 
+86: const cleanMarkdownText = (value) =>
+87:   String(value || "")
+88:     .replace(/^#{1,6}\s*/g, "")
+89:     .replace(/^\*\*(.+)\*\*$/g, "$1")
+90:     .replace(/^\*(.+)\*$/g, "$1")
+91:     .trim();
+92: 
+93: const toMarkdownMessage = ({ title, sections }) => {
+94:   const lines = [`## ${safeRender(title, "Clinical Summary")}`];
+95: 
+96:   sections.forEach((section) => {
+97:     lines.push("", `### ${safeRender(section.title, "Clinical Summary")}`);
+98:     section.paragraphs.forEach((paragraph) => {
+99:       lines.push(safeRender(paragraph, ""));
+100:     });
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

@@ -1,0 +1,130 @@
+[
+  {
+    "id": "diab_overview_fr",
+    "title": "Aperçu du diabète",
+    "category": "Maladies chroniques",
+    "content": "Le diabète est une maladie chronique qui se produit lorsque le pancréas ne produit pas suffisamment d'insuline, ou lorsque le corps ne peut pas utiliser efficacement l'insuline qu'il produit. L'insuline est une hormone qui régule le taux de sucre dans le sang.",
+    "language": "fr",
+    "linked_id": "diab_overview"
+  },
+  {
+    "id": "diab_types_fr",
+    "title": "Types de diabète",
+    "category": "Maladies chroniques",
+    "content": "Il existe trois principaux types de diabète:\n\n1. Diabète de type 1: Se produit lorsque le corps ne produit pas du tout d'insuline. Généralement diagnostiqué dans l'enfance ou l'adolescence.\n\n2. Diabète de type 2: Se produit lorsque le corps ne produit pas suffisamment d'insuline ou lorsque les cellules deviennent résistantes à l'insuline. C'est le type le plus courant.\n\n3. Diabète gestationnel: Se produit pendant la grossesse et disparaît généralement après l'accouchement, mais augmente le risque de développer un diabète de type 2 plus tard.",
+    "language": "fr",
+    "linked_id": "diab_types"
+  },
+  {
+    "id": "diab_symptoms_fr",
+    "title": "Symptômes du diabète",
+    "category": "Maladies chroniques",
+    "content": "Les symptômes courants du diabète comprennent:\n\n- Soif excessive et miction fréquente\n- Faim intense\n- Perte de poids inexpliquée\n- Fatigue et faiblesse\n- Vision floue\n- Cicatrisation lente des plaies\n- Infections fréquentes de la peau, des gencives ou de la vessie\n- Picotements ou engourdissements dans les mains ou les pieds\n\nCes symptômes peuvent ne pas être évidents dans le diabète de type 2, il est donc recommandé de faire des examens réguliers.",
+    "language": "fr",
+    "linked_id": "diab_symptoms"
+  },
+  {
+    "id": "diab_treatment_fr",
+    "title": "Traitement du diabète",
+    "category": "Maladies chroniques",
+    "content": "Le traitement du diabète comprend:\n\n1. Médicaments:\n   - Injections d'insuline (pour le type 1 et certains cas de type 2)\n   - Médicaments oraux (pour le type 2)\n\n2. Changements de mode de vie:\n   - Alimentation saine et équilibrée\n   - Activité physique régulière\n   - Maintien d'un poids santé\n   - Éviter le tabagisme\n\n3. Surveillance régulière de la glycémie\n\n4. Examens médicaux réguliers pour surveiller les complications potentielles",
+    "language": "fr",
+    "linked_id": "diab_treatment"
+  },
+  {
+    "id": "hyp_overview_fr",
+    "title": "Aperçu de l'hypertension artérielle",
+    "category": "Maladies chroniques",
+    "content": "L'hypertension artérielle est une condition courante dans laquelle la force du sang contre les parois des artères est constamment élevée. L'hypertension non traitée peut entraîner de graves problèmes de santé tels que les maladies cardiaques et les accidents vasculaires cérébraux.",
+    "language": "fr",
+    "linked_id": "hyp_overview"
+  },
+  {
+    "id": "hyp_symptoms_fr",
+    "title": "Symptômes de l'hypertension artérielle",
+    "category": "Maladies chroniques",
+    "content": "L'hypertension artérielle ne présente généralement pas de symptômes évidents, c'est pourquoi on l'appelle le 'tueur silencieux'. Cependant, certains symptômes peuvent apparaître dans les cas graves:\n\n- Maux de tête sévères\n- Essoufflement\n- Saignements de nez\n- Étourdissements\n- Douleur thoracique\n- Troubles visuels\n\nIl est recommandé de mesurer régulièrement la tension artérielle pour une détection précoce.",
+    "language": "fr",
+    "linked_id": "hyp_symptoms"
+  },
+  {
+    "id": "hyp_treatment_fr",
+    "title": "Traitement de l'hypertension artérielle",
+    "category": "Maladies chroniques",
+    "content": "Le traitement de l'hypertension comprend:\n\n1. Changements de mode de vie:\n   - Alimentation saine pauvre en sel (régime DASH)\n   - Activité physique régulière\n   - Maintien d'un poids santé\n   - Limitation de la consommation d'alcool\n   - Arrêt du tabagisme\n   - Gestion du stress\n\n2. Médicaments (si nécessaire):\n   - Diurétiques\n   - Inhibiteurs de l'ECA\n   - Bêta-bloquants\n   - Inhibiteurs calciques",
+    "language": "fr",
+    "linked_id": "hyp_treatment"
+  },
+  {
+    "id": "covid_overview_fr",
+    "title": "Aperçu de la COVID-19",
+    "category": "Maladies infectieuses",
+    "content": "La COVID-19 est une maladie infectieuse causée par le nouveau coronavirus (SARS-CoV-2). Le virus se propage principalement par les gouttelettes respiratoires lorsqu'une personne infectée tousse, éternue ou parle.",
+    "language": "fr",
+    "linked_id": "covid_overview"
+  },
+  {
+    "id": "covid_symptoms_fr",
+    "title": "Symptômes de la COVID-19",
+    "category": "Maladies infectieuses",
+    "content": "Les symptômes courants de la COVID-19 comprennent:\n\n- Fièvre ou frissons\n- Toux\n- Essoufflement ou difficulté à respirer\n- Fatigue\n- Douleurs musculaires ou corporelles\n- Maux de tête\n- Perte du goût ou de l'odorat\n- Mal de gorge\n- Congestion ou écoulement nasal\n- Nausées ou vomissements\n- Diarrhée\n\nLes symptômes varient de légers à graves et peuvent apparaître 2 à 14 jours après l'exposition au virus.",
+    "language": "fr",
+    "linked_id": "covid_symptoms"
+  },
+  {
+    "id": "covid_prevention_fr",
+    "title": "Prévention de la COVID-19",
+    "category": "Maladies infectieuses",
+    "content": "Pour prévenir la COVID-19:\n\n1. Faites-vous vacciner et recevez les doses de rappel\n2. Portez un masque dans les espaces bondés\n3. Lavez-vous les mains régulièrement avec de l'eau et du savon\n4. Maintenez une distance de sécurité avec les autres\n5. Évitez les espaces bondés et mal ventilés\n6. Couvrez-vous la bouche et le nez lorsque vous toussez ou éternuez\n7. Restez à la maison si vous êtes malade",
+    "language": "fr",
+    "linked_id": "covid_prevention"
+  },
+  {
+    "id": "mal_overview_fr",
+    "title": "Aperçu du paludisme",
+    "category": "Maladies infectieuses",
+    "content": "Le paludisme est une maladie grave et parfois mortelle causée par des parasites transmis à l'homme par les piqûres de moustiques infectés. Le paludisme est répandu dans les régions tropicales et subtropicales, en particulier en Afrique subsaharienne.",
+    "language": "fr",
+    "linked_id": "mal_overview"
+  },
+  {
+    "id": "mal_symptoms_fr",
+    "title": "Symptômes du paludisme",
+    "category": "Maladies infectieuses",
+    "content": "Les symptômes du paludisme comprennent:\n\n- Fièvre élevée\n- Frissons et tremblements\n- Maux de tête\n- Nausées et vomissements\n- Douleurs musculaires\n- Fatigue intense\n- Transpiration abondante\n- Douleur abdominale\n- Diarrhée\n\nLes symptômes apparaissent généralement 10 à 15 jours après la piqûre du moustique infecté. Sans traitement rapide, ils peuvent évoluer vers des complications graves.",
+    "language": "fr",
+    "linked_id": "mal_symptoms"
+  },
+  {
+    "id": "mal_prevention_fr",
+    "title": "Prévention du paludisme",
+    "category": "Maladies infectieuses",
+    "content": "Pour prévenir le paludisme:\n\n1. Utilisez des moustiquaires imprégnées d'insecticide\n2. Appliquez un répulsif sur la peau exposée\n3. Portez des vêtements couvrant la majeure partie du corps\n4. Utilisez la climatisation ou des moustiquaires aux fenêtres\n5. Prenez des médicaments préventifs si vous voyagez dans des zones endémiques\n6. Évitez les activités extérieures du crépuscule à l'aube (pic d'activité des moustiques)\n7. Éliminez les eaux stagnantes autour de votre domicile",
+    "language": "fr",
+    "linked_id": "mal_prevention"
+  },
+  {
+    "id": "tb_overview_fr",
+    "title": "Aperçu de la tuberculose",
+    "category": "Maladies infectieuses",
+    "content": "La tuberculose (TB) est une maladie infectieuse causée par la bactérie Mycobacterium tuberculosis. La tuberculose affecte principalement les poumons (tuberculose pulmonaire) mais peut toucher d'autres parties du corps. Elle se propage par voie aérienne lorsqu'une personne infectée tousse ou éternue.",
+    "language": "fr",
+    "linked_id": "tb_overview"
+  },
+  {
+    "id": "tb_symptoms_fr",
+    "title": "Symptômes de la tuberculose",
+    "category": "Maladies infectieuses",
+    "content": "Les symptômes de la tuberculose active comprennent:\n\n- Toux persistante pendant plus de 3 semaines\n- Toux avec sang ou expectorations\n- Douleur thoracique\n- Fièvre\n- Sueurs nocturnes\n- Perte de poids inexpliquée\n- Perte d'appétit\n- Fatigue et faiblesse générale\n\nLa tuberculose peut être latente (inactive) pendant des années sans symptômes.",
+    "language": "fr",
+    "linked_id": "tb_symptoms"
+  },
+  {
+    "id": "tb_treatment_fr",
+    "title": "Traitement de la tuberculose",
+    "category": "Maladies infectieuses",
+    "content": "Le traitement de la tuberculose nécessite la prise d'une combinaison d'antibiotiques pendant au moins 6 à 9 mois. Les médicaments les plus courants:\n\n1. Isoniazide\n2. Rifampicine\n3. Éthambutol\n4. Pyrazinamide\n\nIl est très important de:\n- Prendre tous les médicaments selon les instructions\n- Ne pas arrêter le traitement tôt même si les symptômes s'améliorent\n- Assurer un suivi régulier avec le médecin\n\nL'arrêt précoce du traitement peut entraîner une résistance aux médicaments.",
+    "language": "fr",
+    "linked_id": "tb_treatment"
+  }
+]

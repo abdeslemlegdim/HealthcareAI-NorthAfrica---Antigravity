@@ -1,0 +1,101 @@
+Created At: 2026-05-20T21:15:43Z
+Completed At: 2026-05-20T21:15:44Z
+File Path: `file:///c:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 250 to 555
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+250:   }
+251: 
+252:   return {
+253:     title,
+254:     sections,
+255:     warning: safeRender(result.warning, ""),
+256:     disclaimer: safeRender(result.disclaimer, ""),
+257:     sources: result.sources || [],
+258:   };
+259: };
+260: 
+261: const serializeStructuredResponse = (response = {}) => {
+262:   const title = safeRender(response?.title, "").trim();
+263:   const summary = safeRender(response?.summary || response?.answer, "").trim();
+264:   const labels = response?.labels || {};
+265: 
+266:   if (!hasStructuredResponse(response)) {
+267:     return summary || "";
+268:   }
+269: 
+270:   const lines = [];
+271:   if (title) lines.push(title);
+272:   if (summary) lines.push(summary);
+273: 
+274:   const sections = [
+275:     { title: labels.symptoms || "Symptoms", items: response?.symptoms || [] },
+276:     { title: labels.causes || "Causes", items: response?.causes || [] },
+277:     { title: labels.treatment || "Treatment", items: response?.treatment || [] },
+278:   ];
+279: 
+280:   sections.forEach((section) => {
+281:     const items = Array.isArray(section.items) ? section.items.filter(Boolean) : [];
+282:     if (!items.length) return;
+283:     lines.push(`${section.title}:`);
+284:     items.forEach((item) => lines.push(`- ${safeRender(item, "")}`));
+285:   });
+286: 
+287:   if (response?.warning) {
+288:     lines.push(`${labels.warning || "Warning"}: ${safeRender(response.warning, "")}`);
+289:   }
+290: 
+291:   if (response?.disclaimer) {
+292:     lines.push(`
+<truncated 12934 bytes>
+-md text-sm font-medium">
+508:                           {t("retry")}
+509:                         </button>
+510:                       )}
+511:                     </div>
+512:                   </div>
+513:                 )}
+514:                 
+515:               </div>
+516:             </div>
+517:             
+518:             <div className="chatbot__input-box">
+519:               <div className="chatbot__textarea-wrapper">
+520:                 <label className="chatbot__label" htmlFor="chat-textarea">{t("chat_placeholder")}</label>
+521:                 <textarea
+522:                   id="chat-textarea"
+523:                   className="chatbot__textarea"
+524:                   placeholder={t("chat_placeholder")}
+525:                   value={query}
+526:                   disabled={loading}
+527:                   onChange={(e) => setQuery(e.target.value)}
+528:                   onKeyDown={(e) => {
+529:                     if (e.key === "Enter" && !e.shiftKey) {
+530:                       e.preventDefault();
+531:                       sendCurrentQuery();
+532:                     }
+533:                   }}
+534:                   rows={1}
+535:                 />
+536:                 <button
+537:                   className="chatbot__submit chatbot__submit--textarea"
+538:                   onClick={sendCurrentQuery}
+539:                   disabled={!query.trim() || loading}
+540:                   aria-label={t("send_question")}
+541:                 >
+542:                   <SendHorizonal className="chatbot__submit-icon" />
+543:                 </button>
+544:               </div>
+545:             </div>
+546:           </div>
+547:         )}
+548:       </div>
+549:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+550:     </main>
+551:   );
+552: };
+553: 
+554: export default ChatBox;
+555: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

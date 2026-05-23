@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: Healthcare AI Billing API (example)
+  version: 1.0.0
+servers:
+  - url: /
+paths:
+  /api/v1/ai/run:
+    post:
+      summary: Reserve credits and run AI inference (atomic flow)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunRequest'
+      responses:
+        '200':
+          description: Inference result and charges
+        '402':
+          description: Not enough credits
+
+  /api/v1/admin/refund:
+    post:
+      summary: Admin refund a settled ledger entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund processed
+
+  /api/v1/subscriptions/create:
+    post:
+      summary: Create a subscription and grant initial credits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionRequest'
+      responses:
+        '200':
+          description: Subscription created
+
+  /api/v1/accounts/{accountId}/summary:
+    get:
+      summary: Get account credit summary (for dashboard)
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Account summary
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_id: { type: string }
+                  available_credits: { type: integer }
+                  reserved_credits: { type: integer }
+                  lifetime_earned: { type: integer }
+                  lifetime_spent: { type: integer }
+
+  /webhook/stripe:
+    post:
+      summary: Stripe webhook endpoint (verify signature)
+      requestBody:
+        required: true
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    RunRequest:
+      type: object
+      properties:
+        user_id: { type: string }
+        account_id: { type: string }
+        organization_id: { type: string }
+        feature_key: { type: string }
+        request_id: { type: string }
+        payload: { type: object }
+    RefundRequest:
+      type: object
+      properties:
+        ledger_id: { type: string }
+        reason: { type: string }
+    CreateSubscriptionRequest:
+      type: object
+      properties:
+        user_id: { type: string }
+        organization_id: { type: string }
+        plan_code: { type: string }

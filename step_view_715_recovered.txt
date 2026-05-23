@@ -1,0 +1,97 @@
+Created At: 2026-05-20T21:34:09Z
+Completed At: 2026-05-20T21:34:09Z
+File Path: `file:///C:/Users/PC/OneDrive%20-%20ESPRIT/Bureau/HealthcareAI-NorthAfrica%20-%20Antigravity/frontend-react/src/components/Chat/ChatBox.jsx`
+Total Lines: 555
+Total Bytes: 23631
+Showing lines 1 to 555
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import { useEffect, useMemo, useRef, useState } from "react";
+2: import { Activity, Copy, Languages, RefreshCw, SendHorizonal, Sparkles } from "lucide-react";
+3: import ReactMarkdown from "react-markdown";
+4: import remarkGfm from "remark-gfm";
+5: import { describeApiError, getApiTargets, getHealth, queryRAG } from "../../services/api";
+6: import { useRuntime } from "../../context/RuntimeContext";
+7: import { useToast } from "../../context/ToastContext";
+8: import { useLanguageStore } from "../../store/languageStore";
+9: import { useTranslate } from "../../hooks/useTranslate";
+10: import { requestWithRetry } from "../../utils/requestResilience";
+11: import { safeNumber, safeRender } from "../../utils/safeRender";
+12: import { streamParagraphs } from "../../utils/streamingText";
+13: import Badge from "../UI/Badge";
+14: import Button from "../UI/Button";
+15: import ProgressBar from "../UI/ProgressBar";
+16: import MessageBubble from "./MessageBubble";
+17: import SourceCard from "./SourceCard";
+18: 
+19: const CHAT_TIMEOUT_MS = 90000;
+20: 
+21: const medicalTerms = [
+22:   "pneumonia",
+23:   "tuberculosis",
+24:   "covid-19",
+25:   "dyspnea",
+26:   "diagnosis",
+27:   "symptoms",
+28:   "treatment",
+29:   "infection",
+30:   "respiratory",
+31:   "pneumonie",
+32:   "symptomes",
+33:   "traitement",
+34:   "الالتهاب الرئوي",
+35:   "الاعراض",
+36:   "التشخيص"
+37: ];
+38: 
+39: const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g,
+<truncated 22806 bytes>
+                <button onClick={retryLastQuery} className="mt-3 px-3 py-1 bg-red-600 text-white rounded-md text-sm font-medium">
+508:                           {t("retry")}
+509:                         </button>
+510:                       )}
+511:                     </div>
+512:                   </div>
+513:                 )}
+514:                 
+515:               </div>
+516:             </div>
+517:             
+518:             <div className="chatbot__input-box">
+519:               <div className="chatbot__textarea-wrapper">
+520:                 <label className="chatbot__label" htmlFor="chat-textarea">{t("chat_placeholder")}</label>
+521:                 <textarea
+522:                   id="chat-textarea"
+523:                   className="chatbot__textarea"
+524:                   placeholder={t("chat_placeholder")}
+525:                   value={query}
+526:                   disabled={loading}
+527:                   onChange={(e) => setQuery(e.target.value)}
+528:                   onKeyDown={(e) => {
+529:                     if (e.key === "Enter" && !e.shiftKey) {
+530:                       e.preventDefault();
+531:                       sendCurrentQuery();
+532:                     }
+533:                   }}
+534:                   rows={1}
+535:                 />
+536:                 <button
+537:                   className="chatbot__submit chatbot__submit--textarea"
+538:                   onClick={sendCurrentQuery}
+539:                   disabled={!query.trim() || loading}
+540:                   aria-label={t("send_question")}
+541:                 >
+542:                   <SendHorizonal className="chatbot__submit-icon" />
+543:                 </button>
+544:               </div>
+545:             </div>
+546:           </div>
+547:         )}
+548:       </div>
+549:       <div className="sr-only" aria-live="polite">{t("request_state")}: {requestState}</div>
+550:     </main>
+551:   );
+552: };
+553: 
+554: export default ChatBox;
+555: 
+The above content shows the entire, complete file contents of the requested file.

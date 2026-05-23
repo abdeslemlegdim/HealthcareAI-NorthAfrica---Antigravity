@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap");
+
+@layer reset, tokens, base, layout, ui, panels, responsive;
+
+@layer reset {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+@layer tokens {
+	:root {
+		--bg: #0e0c0a;
+		--fg: #ede8df;
+		--muted: #8a7b6e;
+		--accent: #d4a84b;
+		--hairline: 0.0625rem;
+		--ui-inset: 1.75rem;
+		--font-display: "Bebas Neue", sans-serif;
+		--font-mono: "DM Mono", monospace;
+		--z-ui: 10;
+	}
+}
+
+@layer base {
+	html {
+		overscroll-behavior: auto;
+	}
+
+	body {
+		background: var(--bg);
+		color: var(--fg);
+		font-family: var(--font-mono);
+		overflow-x: hidden;
+		overscroll-behavior: none;
+		touch-action: pan-y;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+@layer layout {
+	.scene {
+		position: fixed;
+		inset: 0;
+		overflow: hidden;
+		background: linear-gradient(
+			to top,
+			oklch(32% 0.12 55) 0%,
+			oklch(31% 0.12 57) 3.4%,
+			oklch(29% 0.11 65) 8.6%,
+			oklch(26% 0.1 80) 15.6%,
+			oklch(23% 0.09 130) 24.2%,
+			oklch(20% 0.08 200) 34.4%,
+			oklch(17% 0.07 230) 45.9%,
+			oklch(14% 0.06 252) 57.8%,
+			oklch(12% 0.06 268) 69.6%,
+			oklch(11% 0.05 280) 80.2%,
+			oklch(9% 0.04 300) 89.2%,
+			oklch(6% 0.02 320) 95.9%,
+			oklch(4% 0.01 0) 100%
+		);
+		background-size: 100% 500%;
+		background-position-y: 100%;
+	}
+
+	.scroll-track {
+		display: block;
+		inline-size: 100%;
+		position: relative;
+		will-change: transform;
+	}
+}
+
+@layer ui {
+	#hud {
+		position: fixed;
+		inset-block-start: var(--ui-inset);
+		inset-inline-end: var(--ui-inset);
+		z-index: var(--z-ui);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 0.4rem;
+		pointer-events: none;
+	}
+
+	.hud-title {
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		letter-spacing: 0.12em;
+		color: var(--accent);
+		line-height: 1.1;
+		text-align: right;
+		opacity: 0.6;
+	}
+
+	.progress-bar {
+		inline-size: 5rem;
+		block-size: var(--hairline);
+		background: color-mix(in srgb, var(--muted) 30%, transparent);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.progress-fill {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-start: 0;
+		width: 0%;
+		background: var(--accent);
+		transition: none;
+	}
+
+	.hud-label {
+		font-size: 0.5rem;
+		letter-spacing: 0.28em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	#panel_nav {
+		position: fixed;
+		inset-inline-start: var(--ui-inset);
+		inset-block-start: 50%;
+		translate: 0 -50%;
+		z-index: var(--z-ui);
+		display: flex;
+		flex-direction: column;
+	}
+
+	.nav-dot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		inline-size: 1.2rem;
+		block-size: 1.2rem;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		padding: 0;
+		opacity: 0.4;
+		transition: scale 0.3s, opacity 0.3s;
+	}
+
+	.nav-dot::after {
+		content: "";
+		display: block;
+		inline-size: 0.2rem;
+		block-size: 0.2rem;
+		border-radius: 50%;
+		background-color: var(--muted);
+		transition: background-color 0.3s;
+	}
+
+	.nav-dot.is-active {
+		scale: 1.8;
+		opacity: 1;
+	}
+
+	.nav-dot.is-active::after {
+		background-color: var(--accent);
+	}
+}
+
+@layer panels {
+	.panel {
+		min-block-size: 100lvh;
+		block-size: auto;
+		inline-size: 100%;
+		position: relative;
+		display: block;
+	}
+
+	.panel-inner {
+		min-block-size: 100lvh;
+		block-size: auto;
+		display: flex;
+		align-items: flex-end;
+		padding: 4vw 5vw;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.panel-inner.is-right {
+		justify-content: flex-end;
+	}
+
+	.panel-inner.is-center {
+		justify-content: center;
+	}
+
+	.layer-bg {
+		position: absolute;
+		inset-block-end: -0.15em;
+		inset-inline-start: -0.02em;
+		font-family: var(--font-display);
+		font-size: clamp(16rem, 28vw, 30rem);
+		line-height: 1.1;
+		letter-spacing: -0.04em;
+		color: color-mix(in srgb, var(--fg) 4%, transparent);
+		pointer-events: none;
+		user-select: none;
+		white-space: nowrap;
+	}
+
+	.panel-inner.is-right .layer-bg {
+		inset-inline-start: auto;
+		inset-inline-end: -0.02em;
+	}
+
+	.panel-inner.is-center .layer-bg {
+		inset-inline-start: 50%;
+		translate: -50% 0;
+	}
+
+	.panel-copy {
+		position: relative;
+		z-index: 1;
+		max-inline-size: 36rem;
+	}
+
+	.align-right {
+		text-align: right;
+	}
+
+	.align-center {
+		text-align: center;
+	}
+
+	.layer-tag {
+		font-size: 0.55rem;
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		color: var(--accent);
+		opacity: 0.7;
+		margin-block-end: 1.2rem;
+	}
+
+	h2 {
+		font-family: var(--font-display);
+		font-size: clamp(3rem, 8vw, 7rem);
+		font-weight: 400;
+		letter-spacing: 0.03em;
+		line-height: 0.9;
+		color: var(--fg);
+		margin-block-end: 1.5rem;
+	}
+
+	.layer-line {
+		font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+		line-height: 1.9;
+		color: color-mix(in srgb, var(--fg) 55%, transparent);
+		letter-spacing: 0.05em;
+	}
+
+	.scroll-hint {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-block-start: 2.5rem;
+		color: var(--accent);
+		animation: hint-pulse 2.5s ease-in-out infinite;
+	}
+
+	.scroll-hint-text {
+		font-size: 0.52rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+	}
+
+	#panel_spirit h2 {
+		color: var(--accent);
+	}
+
+	#panel_spirit .layer-bg {
+		color: color-mix(in srgb, var(--accent) 6%, transparent);
+	}
+
+	#panel_void h2 {
+		color: color-mix(in srgb, var(--fg) 55%, transparent);
+	}
+
+	#panel_void .layer-bg {
+		display: none;
+	}
+
+	#panel_void .layer-tag {
+		color: var(--accent);
+		opacity: 0.5;
+	}
+
+	#panel_void .layer-line {
+		color: color-mix(in srgb, var(--fg) 45%, transparent);
+	}
+
+	@keyframes hint-pulse {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.2;
+		}
+	}
+}
+
+@layer responsive {
+	@media (width <= 56.25em) {
+		:root {
+			--ui-inset: 1.25rem;
+		}
+
+		#panel_nav {
+			display: none;
+		}
+
+		.panel-inner {
+			padding: 6vw 6vw;
+		}
+
+		.layer-bg {
+			font-size: 35vw;
+		}
+
+		h2 {
+			font-size: clamp(2.5rem, 11vw, 5rem);
+		}
+	}
+}
