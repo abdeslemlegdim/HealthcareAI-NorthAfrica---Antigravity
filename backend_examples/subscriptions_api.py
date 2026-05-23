@@ -11,6 +11,7 @@ Adapt and integrate into your real backend. Use secure signature verification in
 import json
 import os
 from fastapi import FastAPI, Request, HTTPException
+import logging
 from pydantic import BaseModel
 
 try:
@@ -27,6 +28,13 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:pass@localhost:5432/
 STRIPE_SIGNING_SECRET = os.getenv("STRIPE_SIGNING_SECRET")
 
 app = FastAPI()
+
+# Log whether Stripe signature verification will be enforced
+logger = logging.getLogger("subscriptions_api")
+if STRIPE_SIGNING_SECRET:
+    logger.info("Stripe signature verification enabled (STRIPE_SIGNING_SECRET present)")
+else:
+    logger.info("Stripe signature verification disabled (STRIPE_SIGNING_SECRET not set)")
 
 
 class CreateSubscriptionRequest(BaseModel):
