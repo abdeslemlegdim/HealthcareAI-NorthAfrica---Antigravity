@@ -3,6 +3,7 @@
 This document describes which Stripe events to handle and how to map them into subscription and credit flows. Use Stripe Billing + Metered usage if you intend to bill overages; otherwise use subscription-based refill grants.
 
 Important events to subscribe to:
+
 - `checkout.session.completed` — initial checkout finished, create local subscription record and grant trial/refill if applicable.
 - `invoice.paid` — payment succeeded; ensure credits are refilled and subscription is active.
 - `invoice.payment_failed` — start grace period and notify the user.
@@ -12,6 +13,7 @@ Important events to subscribe to:
 - `payment_method.attached` — update default payment method.
 
 Design patterns
+
 - Use idempotency: store `stripe_event_id` in a table to avoid double-processing.
 - Verify signatures using `STRIPE_SIGNING_SECRET` on every webhook.
 - Use webhooks to drive authoritative state (payment succeeded, canceled, etc.).
@@ -63,22 +65,27 @@ POST /webhook/stripe
   return 200
 
 How to grant credits safely on `invoice.paid`:
+
 1. Begin DB transaction
 2. Insert a `credit_ledger` row with event_type = 'grant' and final_cost = monthly_credits
 3. Update `credit_accounts.available_credits` and `lifetime_earned`
 4. Commit
 
 Notes on metered usage with Stripe:
+
 - If you use Stripe usage records, you can report usage for metered subscription items. This is useful for per-call billing for enterprise.
 - For hybrid credit + subscription models, use Stripe for subscription payments and maintain internal credits for metering. Use Stripe usage only if you want per-call billing visible on Stripe invoices.
 
 Retries and idempotency
+
 - Stripe will retry webhooks; ensure handlers are idempotent.
 - Persist event IDs and ignore duplicates.
 
 Security
+
 - Verify `stripe-signature`.
 - Use a separate webhook endpoint for sensitive admin events.
 
 Testing
+
 - Use the Stripe CLI to send test events during development.

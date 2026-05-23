@@ -1,4 +1,4 @@
-Migration helper notes
+# Migration helper notes
 
 Apply the schema using the supplied PowerShell script on Windows or use `psql` directly.
 

@@ -17,7 +17,6 @@
   overflow-x: hidden;
   overscroll-behavior: none;
   touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
   position: relative;
   min-height: 100vh;
 }
@@ -72,7 +71,7 @@
 .landing-page-root .progress-bar {
   inline-size: 5rem;
   block-size: var(--hairline);
-  background: color-mix(in srgb, var(--muted) 30%, transparent);
+  background: rgba(100, 116, 139, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -170,8 +169,9 @@
   font-size: clamp(16rem, 28vw, 30rem);
   line-height: 1.1;
   letter-spacing: -0.04em;
-  color: color-mix(in srgb, var(--fg) 4%, transparent);
+  color: rgba(241, 245, 249, 0.04);
   pointer-events: none;
+  -webkit-user-select: none;
   user-select: none;
   white-space: nowrap;
 }
@@ -222,7 +222,7 @@
 .landing-page-root .layer-line {
   font-size: clamp(0.65rem, 1.2vw, 0.8rem);
   line-height: 1.9;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: rgba(241, 245, 249, 0.55);
   letter-spacing: 0.05em;
 }
 
@@ -242,7 +242,7 @@
 }
 
 .landing-page-root #panel_void h2 {
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: rgba(241, 245, 249, 0.55);
 }
 
 .landing-page-root #panel_void .layer-bg {
@@ -255,7 +255,7 @@
 }
 
 .landing-page-root #panel_void .layer-line {
-  color: color-mix(in srgb, var(--fg) 45%, transparent);
+  color: rgba(241, 245, 249, 0.45);
 }
 
 @keyframes hint-pulse {

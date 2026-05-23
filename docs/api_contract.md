@@ -1,4 +1,4 @@
-**Billing & Subscription API contract (summary)**
+# Billing & Subscription API contract (summary)
 
 - POST /api/v1/ai/run
   - Purpose: Reserve credits and trigger inference in a single client flow.
@@ -19,6 +19,7 @@
   - Purpose: Dashboard UI reads current `available_credits`, `reserved_credits`, and lifetime stats.
 
 Notes
+
 - All money or credit-affecting operations are written as opaque ledger rows in `credit_ledger`.
 - Use `request_id` and `stripe_event_id` to ensure idempotent processing.
 - Do not trust client-provided cost estimates; always reconcile with `settle_credits`.

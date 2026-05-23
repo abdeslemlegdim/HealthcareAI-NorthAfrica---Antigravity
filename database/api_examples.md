@@ -3,12 +3,13 @@
 This file shows minimal, production-oriented pseudocode and HTTP endpoints for using the `reserve_credits`, `settle_credits`, and `reverse_reservation` functions defined in `v1_schema.sql`.
 
 Assumptions
+
 - Backend uses Postgres and can call the PL/pgSQL functions via a DB client.
 - Use transactions for safety when performing reserve and settle operations.
 
 Examples
 
-1) FastAPI-style endpoint: reserve before running an inference
+1. FastAPI-style endpoint: reserve before running an inference
 
 POST /api/v1/ai/run
 
@@ -56,11 +57,12 @@ def run_ai_endpoint(req):
     return 200, {"result": result, "credits_charged": charged}
 
 Notes:
+
 - The backend should never rely on client-provided estimates for authorization; compute server-side.
 - Use `reverse_reservation` on errors or cancellations.
 - Log the full request_id in `usage_events` and `credit_ledger` to correlate logs and allow reconciliation.
 
-2) Quick refund flow (admin endpoint)
+1. Quick refund flow (admin endpoint)
 
 POST /api/v1/admin/refund
 {
@@ -79,9 +81,10 @@ def refund_handler(req):
     db.update('credit_accounts', {available_credits: available_credits + ledger.final_cost, updated_at: now()}, where id=ledger.account_id)
     -- insert invoice/adjustment record as needed
 
-3) Monthly refill (cron job)
+  1. Monthly refill (cron job)
 
 Run by scheduler at billing renewal time for each account:
+
 - Find accounts with plan.monthly_credits > 0
 - Create a credit_ledger row of type 'grant' with estimated_cost = monthly_credits
 - Update credit_accounts.available_credits += monthly_credits
