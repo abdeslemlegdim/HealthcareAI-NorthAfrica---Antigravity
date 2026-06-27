@@ -138,7 +138,7 @@ const LandingPage = () => {
   return (
     <div className="landing-page-root">
       <div id="hud">
-        <span className="hud-title">HEALTHCARE<br/>OF THE<br/>FUTURE</span>
+        <span className="hud-title">HEALTHCARE<br/>AI<br/>ASSISTANT</span>
         <div className="progress-bar">
           <div id="progress_fill" className="progress-fill" ref={fillRef}></div>
         </div>
@@ -181,9 +181,9 @@ const LandingPage = () => {
                 <p className="layer-tag">Layer II · Diagnostics</p>
                 <h2>SEE THE<br/>UNSEEN.</h2>
                 <p className="layer-line mb-6">Medical imaging analysis powered by Grad-CAM.<br/>Detect anomalies in seconds.</p>
-                <Link to="/imaging" className="inline-block border border-teal-500 text-teal-400 px-6 py-3 rounded-full uppercase tracking-widest text-xs hover:bg-teal-500 hover:text-white transition">
-                  Open Diagnostics
-                </Link>
+                <div className="inline-block border border-teal-500/30 text-teal-500/60 px-6 py-3 rounded-full uppercase tracking-widest text-xs">
+                  Diagnostics Module Integrated
+                </div>
               </div>
             </div>
           </section>
@@ -195,9 +195,9 @@ const LandingPage = () => {
                 <p className="layer-tag">Layer III · Intelligence</p>
                 <h2>FULL<br/>CONFIDENCE.<br/>VERIFIED<br/>ANSWERS.</h2>
                 <p className="layer-line mb-6">Our Hybrid RAG system relies on<br/>verified medical literature, not hallucinations.</p>
-                <Link to="/chat" className="inline-block border border-teal-500 text-teal-400 px-6 py-3 rounded-full uppercase tracking-widest text-xs hover:bg-teal-500 hover:text-white transition">
-                  Talk to AI Assistant
-                </Link>
+                <div className="inline-block border border-teal-500/30 text-teal-500/60 px-6 py-3 rounded-full uppercase tracking-widest text-xs">
+                  RAG Assistant Integrated
+                </div>
               </div>
             </div>
           </section>
@@ -209,9 +209,9 @@ const LandingPage = () => {
                 <p className="layer-tag">Layer IV · Measurement</p>
                 <h2>REMOTE<br/>MONITORING.</h2>
                 <p className="layer-line mb-6">Measure heart rate and vitals using<br/>just your device's camera.</p>
-                <Link to="/vitals" className="inline-block border border-teal-500 text-teal-400 px-6 py-3 rounded-full uppercase tracking-widest text-xs hover:bg-teal-500 hover:text-white transition">
-                  Measure Vitals
-                </Link>
+                <div className="inline-block border border-teal-500/30 text-teal-500/60 px-6 py-3 rounded-full uppercase tracking-widest text-xs">
+                  rPPG Vitals Monitor Integrated
+                </div>
               </div>
             </div>
           </section>
@@ -223,9 +223,9 @@ const LandingPage = () => {
                 <p className="layer-tag">Layer V · Terminal</p>
                 <h2>EVERYTHING.<br/>AS PROMISED.</h2>
                 <p className="layer-line mb-6">The future of healthcare is accessible,<br/>accurate, and immediate.</p>
-                <Link to="/dashboard" className="inline-block bg-teal-500 text-white px-8 py-4 rounded-full uppercase tracking-widest text-xs hover:bg-teal-600 transition shadow-[0_0_20px_rgba(20,184,166,0.4)]">
-                  Enter Dashboard
-                </Link>
+                <div className="inline-block border border-teal-500/50 text-teal-400 px-8 py-4 rounded-full uppercase tracking-widest text-xs shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+                  System Operational
+                </div>
               </div>
             </div>
           </section>
